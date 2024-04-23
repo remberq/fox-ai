@@ -1,5 +1,6 @@
+import React from 'react'
 import { Login } from '@/components/Login/Login'
 
-export default function StartPage() {
+export default function LoginPage() {
     return <Login />
 }

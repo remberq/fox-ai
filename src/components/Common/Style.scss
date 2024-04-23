@@ -1,0 +1,9 @@
+.icon-animation {
+  transform: translateX(300%);
+  animation: ani 0.3s forwards;
+}
+
+@keyframes ani {
+  0% {transform: translateX(300%);}
+  100% {transform: translateY(0);}
+}
