@@ -27,8 +27,6 @@ export const CredentialsForm = () => {
         formState: { isSubmitting, isValid, isSubmitted },
     } = formMethods
 
-    // const isHasAnyErrors = !!Object.keys(errors).length
-
     const formAuth: SubmitHandler<FormData> = async (formData) => {
         const response = await signIn('credentials', {
             email: formData.email,
