@@ -6,23 +6,6 @@ export const revalidateChats = () => revalidateTag('chats')
 
 const BASE_URL = process.env.BACK_URL + '/chats'
 
-export async function chatActions() {
-    try {
-        await fetch(BASE_URL, {
-            method: 'POST',
-            body: JSON.stringify({
-                role: 'system',
-                content:
-                    'Ты код генератор, отвечай всегда сообщением в формате Markdown с указанием языка программирования на котором ты пишешь код',
-            }),
-        })
-    } catch (error) {
-        redirect('error')
-    }
-
-    revalidateChats()
-}
-
 export async function deleteAllChats() {
     try {
         await fetch(BASE_URL, {

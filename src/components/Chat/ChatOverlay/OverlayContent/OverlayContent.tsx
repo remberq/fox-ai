@@ -4,10 +4,10 @@ import DeleteChatConversation from '@/components/Chat/ChatOverlay/OverlayContent
 import OverlayConversations from '@/components/Chat/ChatOverlay/OverlayContent/OverlayConversations'
 import OverlayConversationFooter from '@/components/Chat/ChatOverlay/OverlayContent/OverlayConversationFooter'
 import { getChats } from '@/app/actions/chat.actions'
-import { Chat } from '@prisma/client'
+import type { IChat } from '@/types/ChatTypes'
 
 export default async function OverlayContent() {
-    const chats: Chat[] = await getChats()
+    const chats: IChat[] = await getChats()
 
     return (
         <div className="h-screen p-6">

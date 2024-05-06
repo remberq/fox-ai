@@ -9,7 +9,7 @@ import {
     createMessageAndChat,
 } from '@/app/actions/message.actions'
 import { useRouter } from 'next/navigation'
-import { IGigaChatRequest } from '@/app/api/giga-chat/types'
+import { ROLE_TYPES } from '@/types/GigaChatTypes'
 
 const disabled = false
 
@@ -25,10 +25,10 @@ export default function ChatInput({ chatId }: { chatId?: string }) {
     }
 
     const onClickHandle = async () => {
-        const request: IGigaChatRequest = {
+        const request = {
             messages: [
                 {
-                    role: 'user',
+                    role: ROLE_TYPES.USER,
                     content: chatMessage,
                 },
             ],
@@ -42,12 +42,12 @@ export default function ChatInput({ chatId }: { chatId?: string }) {
             await createMessageAndChat({
                 messages: [
                     {
-                        role: 'system',
+                        role: ROLE_TYPES.SYSTEM,
                         content:
                             'Ты код генератор, отвечай всегда сообщением в формате Markdown с указанием языка программирования на котором ты пишешь код',
                     },
                     {
-                        role: 'user',
+                        role: ROLE_TYPES.USER,
                         content: chatMessage,
                     },
                 ],
