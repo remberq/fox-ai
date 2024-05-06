@@ -7,12 +7,10 @@ import { useRouter } from 'next/navigation'
 import './Style.scss'
 import { CustomModal } from '@/components/Common/Modal/CustomModal'
 import { useState } from 'react'
+import type { IChat } from '@/types/ChatTypes'
 
 interface Props {
-    conversation: {
-        id: number
-        text: string
-    }
+    conversation: IChat
     isActive?: boolean
 }
 

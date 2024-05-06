@@ -1,25 +1,25 @@
 'use server'
-import { IGigaChatRequest } from '@/app/api/giga-chat/types'
 import { revalidateChats } from '@/app/actions/chat.actions'
 import { redirect } from 'next/navigation'
-import { Messages } from '@prisma/client'
 import { revalidateTag } from 'next/cache'
+import { IMessages } from '@/types/ChatTypes'
+import { IGigaChatRequest, ROLE_TYPES } from '@/types/GigaChatTypes'
 
 const BASE_URL = process.env.BACK_URL + '/conversations'
 
 export const getChatMessages = async (chatId: string) => {
     try {
-        const response: Messages[] = await fetch(BASE_URL + `/${chatId}`, {
+        const response: IMessages[] = await fetch(BASE_URL + `/${chatId}`, {
             next: { tags: ['messages'] },
         })
             .then((res) => res.json())
             .then((data) => data.data)
 
         const authorQuestion = response.filter(
-            (message) => message.role === 'user'
+            (message) => message.role === ROLE_TYPES.USER
         )
         const aiAnswer = response.filter(
-            (message) => message.role === 'assistant'
+            (message) => message.role === ROLE_TYPES.ASSISTANT
         )
 
         return { authorQuestion, aiAnswer }

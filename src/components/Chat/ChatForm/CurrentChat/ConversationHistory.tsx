@@ -3,11 +3,11 @@ import { DividerWithText } from '@/components/Common/DividerWithText'
 import AIModelBadge from '@/components/Chat/ChatForm/CurrentChat/AIModelBadge'
 import AIAnswer from '@/components/Chat/ChatForm/CurrentChat/AIAnswer'
 import ConversationFooter from '@/components/Chat/ChatForm/CurrentChat/ConversationFooter'
-import { Messages } from '@prisma/client'
+import type { IMessages } from '@/types/ChatTypes'
 
 interface Props {
-    authorQuestion: Messages[]
-    aiAnswer: Messages[]
+    authorQuestion: IMessages[]
+    aiAnswer: IMessages[]
 }
 export default function ConversationHistory({
     authorQuestion,

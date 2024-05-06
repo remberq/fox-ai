@@ -3,14 +3,10 @@ import { Button } from '@/components/Common/Button'
 import { IconButton } from '@/components/Common/IconButton'
 import search from 'p/search-normal.svg'
 import add from 'p/add.svg'
-import { chatActions } from '@/app/actions/chat.actions'
 import { useRouter } from 'next/navigation'
 
 export default function OverlayConversationHeader() {
     const router = useRouter()
-    const handleClick = async () => {
-        await chatActions()
-    }
 
     const handleButtonClick = () => {
         router.push('/chat')
@@ -27,7 +23,6 @@ export default function OverlayConversationHeader() {
                     onClick={handleButtonClick}
                 />
                 <IconButton
-                    onClick={handleClick}
                     iconButtonClass="bg-zinc-800 w-[50px] h-[50px]"
                     icon={search}
                 />

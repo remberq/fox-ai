@@ -1,19 +1,27 @@
 'use client'
 import '../ChatForm.scss'
 import { useGetShadow } from '@/components/Hooks/ScrollHooks'
-import { Messages } from '@prisma/client'
 import ConversationHistory from '@/components/Chat/ChatForm/CurrentChat/ConversationHistory'
+import { useEffect, useRef } from 'react'
+import type { IMessages } from '@/types/ChatTypes'
 
 interface Props {
     messages: {
-        authorQuestion: Messages[]
-        aiAnswer: Messages[]
+        authorQuestion: IMessages[]
+        aiAnswer: IMessages[]
     } | null
 }
 
 export default function CurrentChat({ messages }: Props) {
     const showTopShadow = useGetShadow('chat-shadow')
     const shadowStyle = showTopShadow ? 'shadow-top-chat' : ''
+    const messageEl = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (messageEl.current && messages) {
+            messageEl.current.scrollTop = messageEl.current.scrollHeight
+        }
+    }, [messages])
 
     if (!messages) {
         // TODO: Добавить загрузчик
@@ -23,7 +31,8 @@ export default function CurrentChat({ messages }: Props) {
     return (
         <div
             id="chat-shadow"
-            className="flex flex-row h-full justify-between overflow-y-scroll scrollbar-hide"
+            ref={messageEl}
+            className="flex scroll-smooth flex-row h-full justify-between overflow-y-scroll scrollbar-hide"
         >
             <div
                 className={`w-full flex flex-col gap-10 shadow-bottom-chat ${shadowStyle}`}
