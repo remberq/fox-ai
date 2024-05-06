@@ -1,7 +1,7 @@
 import { LoginBanner } from '@/components/Login/LoginBanner/LoginBanner'
 import { LoginForm } from '@/components/Login/LoginForm'
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { authOptions } from '@/app/api/auth/[...nextauth]/options'
 import { checkAccess } from '@/app/actions/checkAccess'
 
 export const Login = async () => {

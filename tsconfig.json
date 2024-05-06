@@ -22,6 +22,6 @@
       "p/*": ["./public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "node_modules/react-hook-form"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "node_modules/react-hook-form", "src/env.d.ts"],
   "exclude": ["node_modules"]
 }

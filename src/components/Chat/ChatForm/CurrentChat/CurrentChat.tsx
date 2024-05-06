@@ -1,10 +1,24 @@
 'use client'
-import ConversationHistory from '@/components/Chat/ChatForm/CurrentChat/ConversationHistory'
 import '../ChatForm.scss'
 import { useGetShadow } from '@/components/Hooks/ScrollHooks'
-export default function CurrentChat() {
+import { Messages } from '@prisma/client'
+import ConversationHistory from '@/components/Chat/ChatForm/CurrentChat/ConversationHistory'
+
+interface Props {
+    messages: {
+        authorQuestion: Messages[]
+        aiAnswer: Messages[]
+    } | null
+}
+
+export default function CurrentChat({ messages }: Props) {
     const showTopShadow = useGetShadow('chat-shadow')
     const shadowStyle = showTopShadow ? 'shadow-top-chat' : ''
+
+    if (!messages) {
+        // TODO: Добавить загрузчик
+        return <div>Loading...</div>
+    }
 
     return (
         <div
@@ -14,9 +28,7 @@ export default function CurrentChat() {
             <div
                 className={`w-full flex flex-col gap-10 shadow-bottom-chat ${shadowStyle}`}
             >
-                <ConversationHistory />
-                <ConversationHistory />
-                <ConversationHistory className="pb-24" />
+                <ConversationHistory {...messages} />
             </div>
         </div>
     )

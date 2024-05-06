@@ -2,6 +2,7 @@ import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
 import Image from 'next/image'
 import CircularProgress from '@mui/joy/CircularProgress'
 import errorIcon from 'p/error.svg'
+import Link from 'next/link'
 
 interface Props
     extends DetailedHTMLProps<
@@ -70,10 +71,3 @@ export const Button: React.FC<Props> = ({
         </button>
     )
 }
-
-//
-// className={`flex flex-row gap-2 justify-center rounded-3xl
-//             shadow-[0_4px_0_rgb(82,82,82)] transition-all
-//             ease-out py-2 px-6 border border-black hover:translate-y-1
-//             hover:shadow-[0_2px_0px_rgb(82,82,82)] active:translate-y-2
-//             active:shadow-none ${className}`}
