@@ -2,7 +2,6 @@ import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
 import Image from 'next/image'
 import CircularProgress from '@mui/joy/CircularProgress'
 import errorIcon from 'p/error.svg'
-import Link from 'next/link'
 
 interface Props
     extends DetailedHTMLProps<

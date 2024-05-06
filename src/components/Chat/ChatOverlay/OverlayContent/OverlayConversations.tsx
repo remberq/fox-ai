@@ -3,10 +3,10 @@ import ConversationRow from '@/components/Common/ConversationRow'
 import MouseFollowElement from '@/components/Common/MouseFollowElement'
 import { useGetShadow } from '@/components/Hooks/ScrollHooks'
 import './Chat.scss'
-import { Chat } from '@prisma/client'
 import { useGetConversationId } from '@/components/Hooks/hooks'
+import type { IChat } from '@/types/ChatTypes'
 
-export default function OverlayConversations({ chats }: { chats: Chat[] }) {
+export default function OverlayConversations({ chats }: { chats: IChat[] }) {
     const showTopShadow = useGetShadow('shadow-element')
     const shadowStyle = showTopShadow ? 'shadow-top' : ''
     const chatId = useGetConversationId()
